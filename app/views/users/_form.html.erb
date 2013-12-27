@@ -1,0 +1,30 @@
+<div class="row">
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="alert-box alert">
+        <h2>
+          <%= pluralize(@user.errors.count, "error") %> 
+          prohibited this user from being saved:
+        </h2>
+
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <fieldset>
+      <legend>New User</legend>
+      <%= f.label :email_address %> </br>
+      <%= f.text_field :email_address, placeholder: "foo1234" %>@brner.com
+      </br>
+      <div class="row">
+        <div class="large-12 large-offset-8 columns">
+          <%= f.submit nil, class: "button success radius" %>
+        </div>
+      </div>
+    </fieldset>
+  <% end %>
+
+</div>
