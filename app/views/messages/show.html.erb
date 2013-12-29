@@ -1,0 +1,18 @@
+<h1>Emails#show</h1>
+TO: <h1><%= @email.recipients %> </h1>
+From: <h1><%= @email.sender %> </h1>
+Subject: <h1><%= @email.subject %> </h1>
+Created at: <h1><%= @email.created_at %> </h1>
+
+<% if @email_parts %>
+  <% @email_parts.each do |part| %>
+    <% if part.mime_type == "text/plain" %>
+      <h1><%= raw part.body %></h1>
+    <% else %>
+      <%= ("<img src='data:#{part.mime_type};base64,%s'>" % Base64.encode64(part.body)).html_safe %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+

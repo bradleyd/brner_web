@@ -1,11 +1,11 @@
 class EmailsController < ApplicationController
   def index
-    @user = User.find 4
+    @user   = current_user
     @emails = @user.emails
   end
 
   def show
-    @user = User.find 4
+    @user  = current_user
     @email = Email.find(params["id"])
   end
 

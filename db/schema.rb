@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227052307) do
+ActiveRecord::Schema.define(version: 20131229163608) do
 
   create_table "emails", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +22,34 @@ ActiveRecord::Schema.define(version: 20131227052307) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "mta_time"
+  end
+
+  create_table "message_parts", force: true do |t|
+    t.integer  "message_id"
+    t.string   "cid"
+    t.string   "mime_type"
+    t.string   "is_attachment"
+    t.string   "filename"
+    t.string   "charset"
+    t.binary   "body"
+    t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.string   "sender"
+    t.string   "recipients"
+    t.string   "subject"
+    t.binary   "data"
+    t.string   "mime_type"
+    t.integer  "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "destruct_on"
+    t.datetime "delivered_at"
+    t.boolean  "viewed",       default: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

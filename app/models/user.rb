@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :emails, dependent: :destroy
+  has_many :messages, dependent: :destroy
   validates :email_address, presence: true
   before_save :build_address
 
