@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:emails).find(params["id"])
-    @emails = @user.emails
+    @user = User.includes(:messages).find(params["id"])
+    @emails = @user.messages
   end
 
   def edit
@@ -35,6 +35,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email_address)
+    params.require(:user).permit(:email)
   end 	
 end

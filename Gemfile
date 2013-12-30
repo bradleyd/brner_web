@@ -47,3 +47,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'devise'
+gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'

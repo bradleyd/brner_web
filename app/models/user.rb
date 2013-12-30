@@ -1,11 +1,16 @@
 class User < ActiveRecord::Base
-  has_many :emails, dependent: :destroy
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable
+  
   has_many :messages, dependent: :destroy
-  validates :email_address, presence: true
-  before_save :build_address
+  validates :email, presence: true
+  before_create :build_address
 
   protected
   def build_address
-    self.email_address = self.email_address + "@brner.com"
+    p dbg: [self.email, email]
+    self.email = self.email + "@brner.com"
   end
 end

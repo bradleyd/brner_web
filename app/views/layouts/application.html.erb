@@ -1,14 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Brner</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class"small-12 columns">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "alert-box #{name}" %>
+      <% end %>
+    <% end %>
+    </div>
+    </div>
+    <div class="row">
+      <%= render "layouts/side_nav" %>
+      <div class="small-9 columns">
+        <%= yield %>
+    </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

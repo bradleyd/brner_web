@@ -1,0 +1,29 @@
+<div class="small-3 columns">
+
+  <ul class="side-nav">
+    <li>
+    <%= link_to welcome_index_path do %> 
+       <i class="fi-home large"></i>
+     <% end %>
+    </li>
+    <li>
+    <%= link_to messages_index_path do %> 
+       <i class="fi-mail large"></i>
+     <% end %>
+    </li>
+    <li>
+    <% if current_user %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fi-skull large"></i>
+      <%end%>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <i class="fi-key large"></i>
+      <%end%>
+    <%end%>
+    </li>
+  </ul>
+
+  <p><img src="http://placehold.it/120x140&amp;text=Ad"></p>
+
+</div>
