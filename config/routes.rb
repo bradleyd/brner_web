@@ -4,7 +4,7 @@ Brner::Application.routes.draw do
   get "messages/index"
   get "messages/show"
   get "messages/destroy"
-  resources :users
+  get "messages/download_attachment"
     # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
